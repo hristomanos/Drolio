@@ -38,7 +38,7 @@ public class Stomp : MonoBehaviour
 
         // if (!m_canJump)
         // CoolDown();
-        Debug.Log("Velocity: " + m_RigidBody.velocity);
+        
     }
 
     public void TouchButton()

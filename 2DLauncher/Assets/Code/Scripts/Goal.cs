@@ -13,7 +13,7 @@ public class Goal : MonoBehaviour
 
     [SerializeField] GameManager m_GameManager;
 
-
+    [SerializeField] ParticleSystem m_Fireworks;
    
     void Update()
     {
@@ -29,9 +29,30 @@ public class Goal : MonoBehaviour
         m_Player.GetComponent<PlayerMovement>().enabled = false;
         m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         m_Player.GetComponent<Rigidbody>().useGravity = false;
+
+
+        StartCoroutine(FireFireworks());
+
         //Call Game manager for next level
+        //m_GameManager.LoadFollowingLevel();
+    }
+
+    IEnumerator FireFireworks()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+
+        AudioManager.instance.PlaySound("Fireworks");
+
+        m_Fireworks.Play();
+
+        
+        yield return new WaitForSeconds(3.0f);
+
         m_GameManager.LoadFollowingLevel();
     }
+
+
 
     private void Reset()
     {
