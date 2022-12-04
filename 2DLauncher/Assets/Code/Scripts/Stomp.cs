@@ -47,7 +47,7 @@ public class Stomp : MonoBehaviour
         {
             if (m_RigidBody.velocity.y > 0)
             {
-                m_RigidBody.velocity = Vector3.zero;
+                m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0.0f, m_RigidBody.velocity.z);
             }
             m_RigidBody.AddForce(Vector3.down * force, ForceMode.Impulse);
         }

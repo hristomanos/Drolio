@@ -14,7 +14,10 @@ public class Goal : MonoBehaviour
     [SerializeField] GameManager m_GameManager;
 
     [SerializeField] ParticleSystem m_Fireworks;
-   
+
+    [SerializeField] Animator m_HollowSquareAnimator;
+
+
     void Update()
     {
         CheckIfPlayerHasFallenOff();
@@ -22,19 +25,26 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Play complete level sound
-        AudioManager.instance.PlaySound("LevelComplete");
 
-        //Zero velocity
-        m_Player.GetComponent<PlayerMovement>().enabled = false;
-        m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        m_Player.GetComponent<Rigidbody>().useGravity = false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //Play complete level sound
+            AudioManager.instance.PlaySound("LevelComplete");
 
+            //Zero velocity
+            m_Player.GetComponent<PlayerMovement>().enabled = false;
+            m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            m_Player.GetComponent<Rigidbody>().useGravity = false;
 
-        StartCoroutine(FireFireworks());
+            m_HollowSquareAnimator.SetTrigger("LevelComplete");
 
-        //Call Game manager for next level
-        //m_GameManager.LoadFollowingLevel();
+            //m_HollowSquareAnimator.Play("Expand",0, 0.0f);
+
+            //StartCoroutine(FireFireworks());
+
+            //Call Game manager for next level
+            m_GameManager.LoadFollowingLevel();
+        }
     }
 
     IEnumerator FireFireworks()

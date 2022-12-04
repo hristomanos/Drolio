@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [Range(0,5)]
     [SerializeField] int speed;
 
+    public float getVelocityY() { return m_RigidBody.velocity.y; }
+
     // Start is called before the first frame update
     void Start()
     {
