@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Stomp : MonoBehaviour
 {
-                     Rigidbody m_RigidBody;
-    [SerializeField] int force;
+    Rigidbody m_RigidBody;
+
+    [SerializeField] int m_Force;
 
     [SerializeField]  StaminaController m_StaminaController;
 
     [SerializeField] float m_CoolDownTimer;
     [SerializeField] float m_CoolDownMaxTime = 2;
-    [SerializeField] float m_MaxVelocity;
 
-    bool m_canJump = true;
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +25,16 @@ public class Stomp : MonoBehaviour
     void Update()
     {
         float y = Input.GetAxisRaw("Vertical");
-       // m_canJump
+
         if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (m_StaminaController.Stomp())
             {
-                m_RigidBody.AddForce(Vector3.down * force, ForceMode.Impulse);
+                m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode.Impulse);
             }
-            m_canJump = false;
+            
         }
 
-        // if (!m_canJump)
-        // CoolDown();
         
     }
 
@@ -49,14 +46,11 @@ public class Stomp : MonoBehaviour
             {
                 m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0.0f, m_RigidBody.velocity.z);
             }
-            m_RigidBody.AddForce(Vector3.down * force, ForceMode.Impulse);
+            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode.Impulse);
         }
     }
 
-    private void FixedUpdate()
-    {
-        m_RigidBody.velocity = Vector3.ClampMagnitude(m_RigidBody.velocity, m_MaxVelocity);
-    }
+   
 
     void CoolDown()
     {
@@ -64,7 +58,6 @@ public class Stomp : MonoBehaviour
 
         if (m_CoolDownTimer <= 0)
         {
-            m_canJump = true;
             m_CoolDownTimer = m_CoolDownMaxTime;
         }
 

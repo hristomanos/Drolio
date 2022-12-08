@@ -9,7 +9,7 @@ public class StaminaController : MonoBehaviour
     [SerializeField] float m_CurrentPlayerStamina = 100.0f; //Actual player stamina
     [SerializeField] float m_MaxPlayerStamina = 100.0f;
     [SerializeField] float m_StompCost = 25f;
-    [SerializeField] float m_staminaRegen;
+    [SerializeField] float m_staminaRegenSpeed;
     bool  m_HasStamina = true;
 
     [Header("Stamina UI parameters")]
@@ -50,7 +50,7 @@ public class StaminaController : MonoBehaviour
         
         if (m_CurrentPlayerStamina <= m_MaxPlayerStamina - 0.01f)
         {
-            m_CurrentPlayerStamina += m_staminaRegen * Time.deltaTime;
+            m_CurrentPlayerStamina += m_staminaRegenSpeed * Time.deltaTime;
             UpdateUI();
         }
     }
@@ -61,17 +61,17 @@ public class StaminaController : MonoBehaviour
 
         while (m_CurrentPlayerStamina < m_MaxPlayerStamina)
         {
-            m_CurrentPlayerStamina += m_MaxPlayerStamina / 100;
+            m_CurrentPlayerStamina += m_MaxPlayerStamina / 100 * m_staminaRegenSpeed;
             UpdateUI();
             yield return m_RegenTick;
         }
+        
         m_Regen = null;
     }
 
 
     public void UpdateUI()
     {
-
         m_StaminaSlider_Bar.fillAmount = m_CurrentPlayerStamina / m_MaxPlayerStamina;
     }
 

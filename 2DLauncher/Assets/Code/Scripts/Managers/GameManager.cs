@@ -12,19 +12,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
     [SerializeField] Animator m_Transition;
     [SerializeField] float m_TransitionTime;
-   
-    AudioManager m_AudioManager;
+    [SerializeField] GameObject m_Player;
 
+
+    [SerializeField] Transform m_ResetPosition;
+    [SerializeField] Transform m_BorderLine;
+
+    AudioManager m_AudioManager;
 
     private void Start()
     {
+        Application.targetFrameRate = 30;
         m_AudioManager = AudioManager.instance;
         if (m_AudioManager == null)
         {
             Debug.LogError("No audiomanager found in the scene");
         }
+    }
+
+    void Update()
+    {
+        CheckIfPlayerHasFallenOff();
     }
 
     public void LoadFollowingLevel()
@@ -56,5 +67,24 @@ public class GameManager : MonoBehaviour
         m_AudioManager.PlaySound("PlayButton");
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
- 
+
+
+    public void Reset()
+    {
+        AudioManager.instance.PlaySound("PlayersFallen");
+
+        m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        m_Player.transform.position = new Vector3(m_ResetPosition.position.x, m_ResetPosition.position.y);
+        m_Player.GetComponent<StaminaController>().Reset();
+    }
+
+    private void CheckIfPlayerHasFallenOff()
+    {
+        if (m_Player.transform.position.y < m_BorderLine.position.y)
+        {
+            Reset();
+        }
+    }
+
+
 }

@@ -545,6 +545,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1222790536}
     - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_Color.b
       value: 0.8470589
       objectReference: {fileID: 0}
@@ -555,6 +559,18 @@ PrefabInstance:
     - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_Color.r
       value: 0.9960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_FillMethod
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1893011320, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_FillOrigin
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8393257075405694200, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3088,6 +3104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  m_MaxVelocity: 30
 --- !u!114 &1222790536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3104,7 +3121,6 @@ MonoBehaviour:
   m_StaminaController: {fileID: 1222790537}
   m_CoolDownTimer: 0
   m_CoolDownMaxTime: 2
-  m_MaxVelocity: 20
 --- !u!114 &1222790537
 MonoBehaviour:
   m_ObjectHideFlags: 0

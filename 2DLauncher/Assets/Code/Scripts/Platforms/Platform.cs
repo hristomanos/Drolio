@@ -6,7 +6,8 @@ public class Platform : MonoBehaviour
 {
     Animator m_Animator;
 
-   [SerializeField] float m_minVelocity = 6;
+   [Header("Activate")]
+   [SerializeField] float m_minPlayerVelocity = 6;
     
     void Start()
     {
@@ -19,7 +20,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            if (rigidbody.velocity.y > m_minVelocity)
+            if (rigidbody.velocity.y > m_minPlayerVelocity)
             {
                 m_Animator.Play("Jump", 0, 0.0f);
             }

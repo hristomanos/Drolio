@@ -5,21 +5,21 @@ using Cinemachine;
 
 public class CameraZoomer : MonoBehaviour
 {
-
+    [SerializeField] CinemachineVirtualCamera m_vCam;
+    [SerializeField] PlayerMovement m_PlayerMovement;
+    
     Camera m_mainCamera;
     CinemachineBrain m_cinemachineBrain;
-    [SerializeField] CinemachineVirtualCamera m_vCam;
 
-    [SerializeField] PlayerMovement m_PlayerMovement;
+    float m_playerMaxVelocity;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_mainCamera = Camera.main;
         m_cinemachineBrain = (m_mainCamera = null) ? null : GetComponent<CinemachineBrain>();
         //m_vCam = (m_cinemachineBrain = null) ? null : m_cinemachineBrain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        m_playerMaxVelocity = m_PlayerMovement.GetMaxVelocity();
     }
-    
 
     private void FixedUpdate()
     {
@@ -30,10 +30,15 @@ public class CameraZoomer : MonoBehaviour
     {
         if (m_vCam != null && m_PlayerMovement != null)
         {
-            float currentSpeed = Mathf.Abs(m_PlayerMovement.getVelocityY());
+            float currentSpeed = Mathf.Abs(m_PlayerMovement.GetVelocityY());
 
-            float speedPercentage = Mathf.InverseLerp(0f, 32f, currentSpeed);
+            //Inverse Lerp returns a value between 0 - 1. It is the same as getting the percentage between two values.
+            float speedPercentage = Mathf.InverseLerp(0f, m_playerMaxVelocity, currentSpeed);
+
+            //Making transition between 0 and 1 smoother.
             speedPercentage = Mathf.SmoothStep(0, 1, speedPercentage);
+
+            //Update camera zoom.
             m_vCam.m_Lens.OrthographicSize = Mathf.Lerp(12.32f, 20.0f, speedPercentage);
             
         }

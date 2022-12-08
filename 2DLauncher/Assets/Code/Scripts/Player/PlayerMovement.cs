@@ -7,9 +7,12 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody m_RigidBody;
 
     [Range(0,5)]
-    [SerializeField] int speed;
+    [SerializeField] int speed = 5;
 
-    public float getVelocityY() { return m_RigidBody.velocity.y; }
+    [SerializeField] float m_MaxVelocity = 30f;
+
+    public float GetMaxVelocity() { return m_MaxVelocity; }
+    public float GetVelocityY() { return m_RigidBody.velocity.y; }
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +23,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #if !UNITY_ANDROID && !UNITY_IPHONE
-         MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
+        #if UNITY_EDITOR
+              MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
         #endif
+    }
+
+    private void FixedUpdate()
+    {
+        m_RigidBody.velocity = Vector3.ClampMagnitude(m_RigidBody.velocity, m_MaxVelocity);
     }
 
     public void MovePlayerVelocity(float horizontal)
