@@ -1104,6 +1104,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6154629762364095129}
+    - target: {fileID: 412050188, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1893011319, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1250,6 +1254,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1491896544}
     - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_Player
+      value: 
+      objectReference: {fileID: 1222790529}
+    - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_BorderLine
+      value: 
+      objectReference: {fileID: 1291438454}
+    - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
       propertyPath: m_PausePanel
       value: 
       objectReference: {fileID: 1491896543}
@@ -1257,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 
       objectReference: {fileID: 1491896541}
+    - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_ResetPosition
+      value: 
+      objectReference: {fileID: 698913146}
     - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
       propertyPath: m_TransitionTime
       value: 1.2
@@ -1513,10 +1529,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6154629763561453328, guid: 8564b1653a152554b8af3783eaaaeb24, type: 3}
-      propertyPath: m_MaxVelocity
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 6154629763561453330, guid: 8564b1653a152554b8af3783eaaaeb24, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1561,10 +1573,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6154629763561453333, guid: 8564b1653a152554b8af3783eaaaeb24, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: dcdde6eaa71208b4c8941510b120768f, type: 2}
     - target: {fileID: 6154629763561453334, guid: 8564b1653a152554b8af3783eaaaeb24, type: 3}
       propertyPath: m_Name
       value: Player

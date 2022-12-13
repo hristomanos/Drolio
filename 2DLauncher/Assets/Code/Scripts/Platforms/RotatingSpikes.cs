@@ -5,7 +5,8 @@ using UnityEngine;
 public class RotatingSpikes : Spikes
 {
 
-    [SerializeField] float lerpDuration = 1f;
+    [SerializeField] float lerpDuration = 1.0f;
+    [SerializeField] float delay = 0.0f;
     bool rotating = true;
 
     private void Start()
@@ -30,7 +31,7 @@ public class RotatingSpikes : Spikes
 
         transform.rotation = targetRotation;
 
-        yield return new WaitForSeconds(Random.Range(2f,8f));
+        yield return new WaitForSeconds(2.0f + delay);
 
         StartCoroutine(Rotate180());
     }

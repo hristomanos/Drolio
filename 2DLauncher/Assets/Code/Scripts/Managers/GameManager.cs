@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 30;
+        Time.timeScale = 1;
+        Application.targetFrameRate = 60;
         m_AudioManager = AudioManager.instance;
         if (m_AudioManager == null)
         {
@@ -35,7 +36,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        CheckIfPlayerHasFallenOff();
+        if (m_BorderLine != null && m_ResetPosition != null)
+        {
+            CheckIfPlayerHasFallenOff();
+        }
     }
 
     public void LoadFollowingLevel()

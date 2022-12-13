@@ -15,8 +15,11 @@ public class StaminaController : MonoBehaviour
     [Header("Stamina UI parameters")]
     [SerializeField] Image m_StaminaSlider_Bar;
 
-    WaitForSeconds m_RegenTick = new WaitForSeconds(0.1f);
+    WaitForSeconds m_RegenTick = new WaitForSeconds(0.01f);
     Coroutine m_Regen;
+
+
+
 
     void Update()
     {
@@ -25,6 +28,7 @@ public class StaminaController : MonoBehaviour
 
     public bool Stomp()
     {
+        //Stomp cannot be used if there is not enough stamina
         if (m_CurrentPlayerStamina - m_StompCost >= 0)
         {
             m_CurrentPlayerStamina -= m_StompCost;
@@ -48,7 +52,7 @@ public class StaminaController : MonoBehaviour
    void Regenerate()
     {
         
-        if (m_CurrentPlayerStamina <= m_MaxPlayerStamina - 0.01f)
+        if (m_CurrentPlayerStamina <= m_MaxPlayerStamina)
         {
             m_CurrentPlayerStamina += m_staminaRegenSpeed * Time.deltaTime;
             UpdateUI();
@@ -62,6 +66,7 @@ public class StaminaController : MonoBehaviour
         while (m_CurrentPlayerStamina < m_MaxPlayerStamina)
         {
             m_CurrentPlayerStamina += m_MaxPlayerStamina / 100 * m_staminaRegenSpeed;
+
             UpdateUI();
             yield return m_RegenTick;
         }

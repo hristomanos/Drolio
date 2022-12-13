@@ -36,6 +36,7 @@ public class Sound
         {
             m_AudioSource.volume = m_Volume * (1 + Random.Range(-randomVolume / 2f, randomVolume / 2f));
             m_AudioSource.pitch = m_Pitch * (1 + Random.Range(-randomPitch / 2f, randomPitch / 2f));
+            
         }
         else
         {

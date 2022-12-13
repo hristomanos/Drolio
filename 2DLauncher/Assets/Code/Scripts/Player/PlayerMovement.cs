@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody m_RigidBody;
 
-    [Range(0,5)]
+    [Range(0,50)]
     [SerializeField] int speed = 5;
 
     [SerializeField] float m_MaxVelocity = 30f;
+
+    
 
     public float GetMaxVelocity() { return m_MaxVelocity; }
     public float GetVelocityY() { return m_RigidBody.velocity.y; }
