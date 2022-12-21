@@ -6,15 +6,15 @@ public class Basket : MonoBehaviour
 {
     CinemachineImpulseSource screenShake;
     float timeSpeed = 1; 
+
     private void Start()
     {
         screenShake = GetComponent<CinemachineImpulseSource>();
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             screenShake.GenerateImpulse();
             timeSpeed = 0.5f;

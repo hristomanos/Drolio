@@ -7,9 +7,9 @@ public class Spikes : MonoBehaviour
 
     [SerializeField] protected GameManager m_gameManager;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             m_gameManager.Reset();
         }

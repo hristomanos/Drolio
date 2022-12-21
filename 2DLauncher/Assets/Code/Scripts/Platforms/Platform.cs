@@ -6,20 +6,19 @@ public class Platform : MonoBehaviour
 {
     Animator m_Animator;
 
-   [Header("Activate")]
-   [SerializeField] float m_minPlayerVelocity = 6;
+    [Header("Activate")]
+    [SerializeField] float m_minPlayerVelocity = 6;
     
     void Start()
     {
         m_Animator = GetComponent<Animator>();    
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.CompareTag("Player"))
         {
-            Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
+            Rigidbody2D rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rigidbody.velocity.y > m_minPlayerVelocity)
             {
                 m_Animator.Play("Jump", 0, 0.0f);

@@ -23,10 +23,13 @@ public class GameManager : MonoBehaviour
 
     AudioManager m_AudioManager;
 
+
+
     private void Start()
     {
         Time.timeScale = 1;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
+
         m_AudioManager = AudioManager.instance;
         if (m_AudioManager == null)
         {
@@ -58,7 +61,16 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(m_TransitionTime);
 
-        SceneManager.LoadScene(levelIndex);
+        //SceneManager.LoadScene(levelIndex);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelIndex);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
     }
 
     public void RestartLevel()
@@ -77,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.PlaySound("PlayersFallen");
 
-        m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         m_Player.transform.position = new Vector3(m_ResetPosition.position.x, m_ResetPosition.position.y);
         m_Player.GetComponent<StaminaController>().Reset();
     }

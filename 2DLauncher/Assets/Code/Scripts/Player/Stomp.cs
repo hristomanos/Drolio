@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stomp : MonoBehaviour
 {
-    Rigidbody m_RigidBody;
+    Rigidbody2D m_RigidBody;
 
     [SerializeField] int m_Force;
 
@@ -13,12 +13,14 @@ public class Stomp : MonoBehaviour
     [SerializeField] float m_CoolDownTimer;
     [SerializeField] float m_CoolDownMaxTime = 2;
 
+    [SerializeField] float m_FallMultiplier = 2.5f;
+    [SerializeField] float m_LowStompMultiplier = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         m_CoolDownTimer = m_CoolDownMaxTime;
-        m_RigidBody = GetComponent<Rigidbody>();
+        m_RigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,16 +28,26 @@ public class Stomp : MonoBehaviour
     {
         float y = Input.GetAxisRaw("Vertical");
 
-        if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (m_StaminaController.Stomp())
+            if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode.Impulse);
-            }
+                if (m_StaminaController.Stomp())
+                {
+                    if (m_RigidBody.velocity.y > 0)
+                    {
+                        m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
+                    }
+
+
+                   //m_RigidBody.velocity += Vector2.up * Physics2D.gravity.y * (m_FallMultiplier - 1) * Time.deltaTime;
+                     m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
+                }
             
-        }
+            }
+
 
         
+
+
     }
 
     public void TouchButton()
@@ -44,9 +56,9 @@ public class Stomp : MonoBehaviour
         {
             if (m_RigidBody.velocity.y > 0)
             {
-                m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0.0f, m_RigidBody.velocity.z);
+                m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
             }
-            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode.Impulse);
+            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
         }
     }
 

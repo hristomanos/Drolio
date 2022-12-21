@@ -10,7 +10,7 @@ public class StaminaController : MonoBehaviour
     [SerializeField] float m_MaxPlayerStamina = 100.0f;
     [SerializeField] float m_StompCost = 25f;
     [SerializeField] float m_staminaRegenSpeed;
-    bool  m_HasStamina = true;
+    
 
     [Header("Stamina UI parameters")]
     [SerializeField] Image m_StaminaSlider_Bar;

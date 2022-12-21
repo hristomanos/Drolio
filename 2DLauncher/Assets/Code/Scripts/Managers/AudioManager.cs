@@ -54,14 +54,19 @@ public class Sound
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
+            Destroy(this);
             Debug.LogError("More than one AudioManager in the scene");
         }
-        instance = this;
+        else
+        {
+            instance = this;
+        }
+       
     }
 
     [SerializeField]

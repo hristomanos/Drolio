@@ -13,18 +13,17 @@ public class Goal : MonoBehaviour
 
     [SerializeField] Animator m_HollowSquareAnimator;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             //Play cheerful sound
             AudioManager.instance.PlaySound("LevelComplete");
 
             //Freeze player
             m_Player.GetComponent<PlayerMovement>().enabled = false;
-            m_Player.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            m_Player.GetComponent<Rigidbody>().useGravity = false;
+            m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            m_Player.GetComponent<Rigidbody2D>().gravityScale = 0;
 
             //Play animation
             m_HollowSquareAnimator.SetTrigger("LevelComplete");

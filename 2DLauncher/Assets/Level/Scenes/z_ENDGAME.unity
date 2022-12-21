@@ -978,7 +978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -364, y: -394.13}
+  m_AnchoredPosition: {x: -96, y: -394.13}
   m_SizeDelta: {x: -892.0817, y: -788.2539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &770483050
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A game by Chrima
+  m_text: Mani Games
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 791eddbe87b80ca429936c1c9fe231b8, type: 2}
   m_sharedMaterial: {fileID: 5912177328808223077, guid: 791eddbe87b80ca429936c1c9fe231b8, type: 2}
@@ -1064,7 +1064,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 693.6242, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

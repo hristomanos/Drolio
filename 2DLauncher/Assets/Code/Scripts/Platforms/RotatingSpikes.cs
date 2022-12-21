@@ -7,11 +7,16 @@ public class RotatingSpikes : Spikes
 
     [SerializeField] float lerpDuration = 1.0f;
     [SerializeField] float delay = 0.0f;
-    bool rotating = true;
+
+
+    WaitForSeconds waitBeforeRotate;
+
+    bool isLookingUp = true;
 
     private void Start()
     {
         StartCoroutine(Rotate180());
+        waitBeforeRotate = new WaitForSeconds(5.0f + delay);
     }
 
 
@@ -30,8 +35,8 @@ public class RotatingSpikes : Spikes
         }
 
         transform.rotation = targetRotation;
-
-        yield return new WaitForSeconds(2.0f + delay);
+        isLookingUp = !isLookingUp;
+        yield return waitBeforeRotate;
 
         StartCoroutine(Rotate180());
     }
