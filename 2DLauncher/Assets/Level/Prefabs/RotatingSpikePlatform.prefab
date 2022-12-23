@@ -98,7 +98,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6875785448522675214
 Transform:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gameManager: {fileID: 0}
   lerpDuration: 0.5
-  delay: 0
+  delay: 1
 --- !u!60 &511616476673938747
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -158,10 +158,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.013504028, y: 1.405004}
+    - - {x: 0.6642456, y: 0.47302008}
+      - {x: -0.013504028, y: 1.405004}
+      - {x: -0.6891098, y: 0.47871447}
       - {x: -1.3830633, y: 1.4295273}
-      - {x: -1.9512954, y: 0.18999207}
-      - {x: 1.9647995, y: 0.18999219}
+      - {x: -1.9131179, y: 0.3917805}
+      - {x: 1.8681732, y: 0.3942213}
       - {x: 1.3695593, y: 1.4160271}
 --- !u!1 &6875785448870281947
 GameObject:

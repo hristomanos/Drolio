@@ -18,15 +18,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject m_Player;
 
 
-    [SerializeField] Transform m_ResetPosition;
+    [SerializeField] Transform m_PlayerResetPosition;
     [SerializeField] Transform m_BorderLine;
 
     AudioManager m_AudioManager;
 
+    GameOverScreen m_gameOverScreen;
 
+    bool m_hasPlayedDeathSound = false;
+
+    public void SetPlayerResetPosition(Transform resetPosition) { m_PlayerResetPosition = resetPosition;  }
+    public int CurrentCheckpointID { get; set; }
 
     private void Start()
     {
+        m_gameOverScreen = GetComponent<GameOverScreen>();
         Time.timeScale = 1;
         Application.targetFrameRate = 30;
 
@@ -39,9 +45,19 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (m_BorderLine != null && m_ResetPosition != null)
+        if (m_BorderLine != null && m_PlayerResetPosition != null)
         {
-            CheckIfPlayerHasFallenOff();
+            if (PlayerHasFallenOff())
+            {
+                if (!m_hasPlayedDeathSound)
+                {
+                    AudioManager.instance.PlaySound("PlayersFallen");
+                    m_Player.SetActive(false);
+                    m_gameOverScreen.FadeIn();
+                    m_hasPlayedDeathSound = true;
+                }
+                //Show game over screen
+            }
         }
     }
 
@@ -84,23 +100,65 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void RestartFromCheckpoint()
+    {
+        StartCoroutine(FadeInAndOut());
+    }
+
+    IEnumerator FadeInAndOut()
+    {
+        m_Transition.SetTrigger("Start");
+        
+        yield return new WaitForSeconds(m_TransitionTime);
+
+        Reset();
+        m_Transition.SetTrigger("End");
+    }
+
 
     public void Reset()
     {
-        AudioManager.instance.PlaySound("PlayersFallen");
-
+        //AudioManager.instance.PlaySound("PlayersFallen");
+        
+        m_Player.SetActive(true);
+        m_hasPlayedDeathSound = false;
         m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        m_Player.transform.position = new Vector3(m_ResetPosition.position.x, m_ResetPosition.position.y);
+        m_Player.transform.position = new Vector3(m_PlayerResetPosition.position.x, m_PlayerResetPosition.position.y);
+        m_Player.GetComponent<StaminaController>().Reset();
+        m_Player.GetComponent<Death>().Reset();
+        m_gameOverScreen.Reset();
+    }
+
+
+    public void KillPlayer(Vector2 pointOfContact)
+    {
+        AudioManager.instance.PlaySound("PlayersFallen");
+        m_Player.GetComponent<Death>().Die(pointOfContact);
+        m_gameOverScreen.FadeIn();
+        //StartCoroutine(Delay(2.0f));
+    }
+
+    IEnumerator Delay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        m_Player.transform.position = new Vector3(m_PlayerResetPosition.position.x, m_PlayerResetPosition.position.y);
+        m_Player.GetComponent<Death>().Reset();
         m_Player.GetComponent<StaminaController>().Reset();
     }
 
-    private void CheckIfPlayerHasFallenOff()
+    private bool PlayerHasFallenOff()
     {
         if (m_Player.transform.position.y < m_BorderLine.position.y)
         {
-            Reset();
+            return true;
         }
+        else
+            return false;
     }
+
+   
+
+    
 
 
 }

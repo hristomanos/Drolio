@@ -1202,7 +1202,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
   m_PrefabInstance: {fileID: 1721405167}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2048013017}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f856c9042875a6b468d3268009d9e768, type: 3}
@@ -1481,6 +1481,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TouchButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2354864342857884205, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1281563400}
+    - target: {fileID: 2354864342857884205, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartFromCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048538862406645032, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1281563400}
+    - target: {fileID: 3048538862406645032, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 8393257076585813668, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1584,6 +1600,14 @@ PrefabInstance:
     - target: {fileID: 8582951104630991011, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PauseGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8943904579831807111, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1281563400}
+    - target: {fileID: 8943904579831807111, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
@@ -1845,6 +1869,10 @@ PrefabInstance:
       value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_PlayerResetPosition
+      value: 
+      objectReference: {fileID: 698913146}
+    - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
       propertyPath: m_numberOfDiamondsText
       value: 
       objectReference: {fileID: 1431906582}
@@ -1960,6 +1988,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6037752841288447194, guid: a82ae58f419c9224fa638333193a3475, type: 3}
   m_PrefabInstance: {fileID: 1724126580}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1735306517 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4754638524065401068, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+  m_PrefabInstance: {fileID: 1431906578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1857321222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,3 +2088,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08dcc019e3659544da7c2655b2f21bfd, type: 3}
+--- !u!1 &2048013017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6890949274351648458, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+  m_PrefabInstance: {fileID: 1721405167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2048013018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048013017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758eb3551eac4114fa88ec84fb41b3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_transitionTime: 0.5
+  m_canvasGroup: {fileID: 1735306517}

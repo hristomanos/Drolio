@@ -26,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #if UNITY_EDITOR
-                MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
-        #endif
+#if UNITY_EDITOR
+        MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
+#endif
     }
 
     private void FixedUpdate()
@@ -38,8 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayerVelocity(float horizontal)
     {
-        
-        m_RigidBody.velocity = new Vector2(horizontal * speed, m_RigidBody.velocity.y); // Move to the right
+        if (this.enabled == true)
+        {
+            m_RigidBody.velocity = new Vector2(horizontal * speed, m_RigidBody.velocity.y); // Move to the right
+        }
     }
 
 }

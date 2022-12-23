@@ -1211,6 +1211,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TouchButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2354864342857884205, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1585532176}
+    - target: {fileID: 2354864342857884205, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartFromCheckpoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3048538862406645032, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1585532176}
+    - target: {fileID: 3048538862406645032, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReturnToMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 8393257076585813668, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1303,6 +1319,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8943904579831807111, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1585532176}
+    - target: {fileID: 8943904579831807111, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
 --- !u!95 &1491896541 stripped
@@ -1337,6 +1361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1491896545 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 4754638524065401068, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+  m_PrefabInstance: {fileID: 1491896540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1585532175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1384,6 +1413,10 @@ PrefabInstance:
       propertyPath: m_TransitionTime
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_PlayerResetPosition
+      value: 
+      objectReference: {fileID: 698913146}
     - target: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
       propertyPath: m_numberOfDiamondsText
       value: 
@@ -1443,12 +1476,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6890949274351648457, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
   m_PrefabInstance: {fileID: 1585532175}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1585532177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f856c9042875a6b468d3268009d9e768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1585532177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6890949274351648458, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+  m_PrefabInstance: {fileID: 1585532175}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1585532178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585532177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758eb3551eac4114fa88ec84fb41b3f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_transitionTime: 0.5
+  m_canvasGroup: {fileID: 1491896545}
 --- !u!1001 &1624957413
 PrefabInstance:
   m_ObjectHideFlags: 0

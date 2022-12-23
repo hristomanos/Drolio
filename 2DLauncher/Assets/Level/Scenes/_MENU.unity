@@ -864,8 +864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.5529785, y: 352.38}
-  m_SizeDelta: {x: -237.96, y: -842.77}
+  m_AnchoredPosition: {x: 0.00048828125, y: 307}
+  m_SizeDelta: {x: 0.001, y: -759.7008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869068780
 MonoBehaviour:
@@ -916,8 +916,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 232
-  m_fontSizeBase: 232
+  m_fontSize: 333
+  m_fontSizeBase: 333
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1125,6 +1125,14 @@ PrefabInstance:
       value: 174.6174
       objectReference: {fileID: 0}
     - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1154,11 +1162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 467
+      value: 630
       objectReference: {fileID: 0}
     - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00002718
+      value: -87.309
       objectReference: {fileID: 0}
     - target: {fileID: 5109313388377846634, guid: 3f995a549de56224e82610c7e924a8e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1196,6 +1204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Transition: {fileID: 2063085281}
   m_TransitionTime: 1.5
+  m_Player: {fileID: 0}
+  m_PlayerResetPosition: {fileID: 0}
+  m_BorderLine: {fileID: 0}
 --- !u!4 &6890949272580630342
 Transform:
   m_ObjectHideFlags: 0
