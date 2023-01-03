@@ -13,22 +13,27 @@ public class Stomp : MonoBehaviour
     [SerializeField] float m_CoolDownTimer;
     [SerializeField] float m_CoolDownMaxTime = 2;
 
-    [SerializeField] float m_FallMultiplier = 2.5f;
-    [SerializeField] float m_LowStompMultiplier = 2.0f;
+    
+   [SerializeField] ParticleSystem m_Dust;
+
+    Animator m_Animator;
+
+    public bool buttonPressed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         m_CoolDownTimer = m_CoolDownMaxTime;
         m_RigidBody = GetComponent<Rigidbody2D>();
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float y = Input.GetAxisRaw("Vertical");
-
-            if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+       
+        if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if (m_StaminaController.Stomp())
                 {
@@ -36,10 +41,8 @@ public class Stomp : MonoBehaviour
                     {
                         m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
                     }
-
-
-                   //m_RigidBody.velocity += Vector2.up * Physics2D.gravity.y * (m_FallMultiplier - 1) * Time.deltaTime;
-                     m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
+                buttonPressed = true;
+                m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
                 }
             
             }
@@ -59,6 +62,7 @@ public class Stomp : MonoBehaviour
                 m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
             }
 
+            buttonPressed = true;
             m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
         }
     }
@@ -76,11 +80,17 @@ public class Stomp : MonoBehaviour
 
     }
 
+    void CreateDust()
+    {
+        m_Dust.Play();
+    }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (Mathf.Abs(m_RigidBody.velocity.y) > 5 && collision.gameObject.layer == 6)
         {
+            CreateDust();
+            m_Animator.Play("Squeeze", 0,0);
             AudioManager.instance.PlaySound("Stomp");
         }
     }

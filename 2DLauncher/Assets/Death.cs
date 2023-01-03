@@ -64,7 +64,7 @@ public class Death : MonoBehaviour
         m_playerMovement.enabled = true;
         m_boxCollider2D.enabled  = true;
         m_spriteRenderer.enabled = true;
-        m_trailRenderer.enabled  = true;
+       // m_trailRenderer.enabled  = true;
         m_stomp.enabled          = true;
     }
 

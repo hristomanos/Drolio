@@ -41,6 +41,8 @@ public class CameraZoomer : MonoBehaviour
 
             float speedPercentage = Mathf.InverseLerp(0f, m_playerMaxVelocity, m_currentMaxVelocity);
 
+          
+
             //Making transition between 0 and 1 smoother.
             //speedPercentage = Mathf.SmoothStep(0, 1, speedPercentage);
             speedPercentage = Mathf.SmoothStep(0, 1, speedPercentage);

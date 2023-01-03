@@ -8,7 +8,7 @@ public class Platform : MonoBehaviour
 
     [Header("Activate")]
     [SerializeField] float m_minPlayerVelocity = 6;
-    
+
     void Start()
     {
         m_Animator = GetComponent<Animator>();    

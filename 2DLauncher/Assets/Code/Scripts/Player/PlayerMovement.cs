@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] int speed = 5;
 
 
-    [SerializeField] float m_MaxVelocity = 30f;
+    [SerializeField] float m_MaxVelocity = 20f;
+    [SerializeField] float m_FallMultiplier = 2.5f;
 
-    
 
     public float GetMaxVelocity() { return m_MaxVelocity; }
     public float GetVelocityY() { return m_RigidBody.velocity.y; }
@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_RigidBody.velocity = Vector2.ClampMagnitude(m_RigidBody.velocity, m_MaxVelocity);
+        ClampUpwardVelocity();
+        //ClampVelocity();
     }
 
     public void MovePlayerVelocity(float horizontal)
@@ -43,5 +44,25 @@ public class PlayerMovement : MonoBehaviour
             m_RigidBody.velocity = new Vector2(horizontal * speed, m_RigidBody.velocity.y); // Move to the right
         }
     }
+
+
+    void ClampUpwardVelocity()
+    {
+        if (m_RigidBody.velocity.y > 0)
+        {
+            Vector2 temp = m_RigidBody.velocity;
+            temp.y = Mathf.Clamp(temp.y, 0, m_MaxVelocity);
+        }
+       
+        m_RigidBody.velocity += Vector2.up * Physics2D.gravity.y * (m_FallMultiplier - 1) * Time.deltaTime;
+       
+    }
+
+    void ClampVelocity()
+    {
+        m_RigidBody.velocity = Vector2.ClampMagnitude(m_RigidBody.velocity, m_MaxVelocity);
+    }
+
+   
 
 }
