@@ -11,4 +11,9 @@ public class Diamond : MonoBehaviour
         Destroy(gameObject);
     }
 
+
+    //Turn off Sprite
+    //Disable box collider
+    //Play Anim
+
 }

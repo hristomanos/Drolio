@@ -20,6 +20,9 @@ public class Death : MonoBehaviour
     TrailRenderer  m_trailRenderer;
     Stomp          m_stomp;
 
+
+    [SerializeField] GameObject m_Face;
+
     private void Start()
     {
         m_rigidBody2D    = GetComponent<Rigidbody2D>();
@@ -47,6 +50,7 @@ public class Death : MonoBehaviour
         m_spriteRenderer.enabled = false;
         m_trailRenderer.enabled  = false;
         m_stomp.enabled          = false;
+        m_Face.SetActive(false);
     }
 
     void SwapWithBreakableObject()
@@ -59,13 +63,14 @@ public class Death : MonoBehaviour
         m_BreakableObject.SetActive(false);
 
         m_rigidBody2D.velocity  = Vector3.zero;
-        m_rigidBody2D.gravityScale = 1;
+        m_rigidBody2D.gravityScale = 2;
 
         m_playerMovement.enabled = true;
         m_boxCollider2D.enabled  = true;
         m_spriteRenderer.enabled = true;
        // m_trailRenderer.enabled  = true;
         m_stomp.enabled          = true;
+        m_Face.SetActive(true);
     }
 
 

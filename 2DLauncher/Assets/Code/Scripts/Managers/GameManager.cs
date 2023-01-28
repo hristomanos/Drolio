@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviour
 
     bool m_hasPlayedDeathSound = false;
 
+    LivesManager m_LivesManager;
+
+
     public void SetPlayerResetPosition(Transform resetPosition) { m_PlayerResetPosition = resetPosition;  }
     public int CurrentCheckpointID { get; set; }
 
     private void Start()
     {
+        m_LivesManager = GetComponent<LivesManager>();
         m_gameOverScreen = GetComponent<GameOverScreen>();
         Time.timeScale = 1;
         Application.targetFrameRate = 30;
@@ -56,7 +60,7 @@ public class GameManager : MonoBehaviour
                     m_gameOverScreen.FadeIn();
                     m_hasPlayedDeathSound = true;
                 }
-                //Show game over screen
+               
             }
         }
     }
@@ -133,9 +137,27 @@ public class GameManager : MonoBehaviour
     public void KillPlayer(Vector2 pointOfContact)
     {
         AudioManager.instance.PlaySound("PlayersFallen");
+        m_LivesManager.Decrease(1);
+
+        if (PlayerIsOutOfLives())
+        {
+            m_gameOverScreen.DisableRestartFromCheckPointButton();
+        }
+
         m_Player.GetComponent<Death>().Die(pointOfContact);
         m_gameOverScreen.FadeIn();
         //StartCoroutine(Delay(2.0f));
+    }
+
+    bool PlayerIsOutOfLives()
+    {
+        if (m_LivesManager.GetNumberOfLives() <= 0)
+        {
+            return true;
+        }
+        else
+            return false;
+
     }
 
     IEnumerator Delay(float seconds)
@@ -157,7 +179,10 @@ public class GameManager : MonoBehaviour
     }
 
    
+    void UpdateLivesUI()
+    {
 
+    }
     
 
 

@@ -11,6 +11,9 @@ public class CameraZoomer : MonoBehaviour
     Camera m_mainCamera;
     CinemachineBrain m_cinemachineBrain;
 
+    [SerializeField] GameObject player;
+
+
     float m_playerMaxVelocity;
 
     float m_currentMaxVelocity = 0;
@@ -50,8 +53,8 @@ public class CameraZoomer : MonoBehaviour
 
             
             //Update camera zoom.
-            m_vCam.m_Lens.OrthographicSize = Mathf.Lerp(12.32f, m_currentMaxVelocity, speedPercentage);
-            //ZoomIn();
+            m_vCam.m_Lens.OrthographicSize = Mathf.Lerp(12.32f, m_currentMaxVelocity + 5, speedPercentage);
+            ZoomIn();
         }
     }
 
@@ -60,6 +63,10 @@ public class CameraZoomer : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         m_currentMaxVelocity -= Time.deltaTime;
+        if (m_currentMaxVelocity <= 0)
+        {
+            m_currentMaxVelocity = 0;
+        }
     }
 
 
@@ -78,22 +85,13 @@ public class CameraZoomer : MonoBehaviour
         Debug.Log(m_currentMaxVelocity);
     }
 
-    void CheckMaxVelocityThreshold()
+    void GroundCheck()
     {
-        if (m_currentMaxVelocity > 0 && m_currentMaxVelocity <= 10f)
-        {
-            m_vCam.m_Lens.OrthographicSize = 12.32f;
-        }
+        Ray ray;
+        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, Vector2.down);
 
-        else if (m_currentMaxVelocity > 10 && m_currentMaxVelocity <= 15)
-        {
-            m_vCam.m_Lens.OrthographicSize = 15.5f;
-        }
 
-        else if (m_currentMaxVelocity > 15 && m_currentMaxVelocity < 25)
-        {
-            m_vCam.m_Lens.OrthographicSize = 20.0f;
-        }
     }
+
 
 }

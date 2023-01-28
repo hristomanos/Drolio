@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script is responsible for adding a downward force to the player.
+/// </summary>
 public class Stomp : MonoBehaviour
 {
     Rigidbody2D m_RigidBody;
 
-    [SerializeField] int m_Force;
+    [SerializeField] float m_Force;
+    [SerializeField] float m_MaxForce;
 
     [SerializeField]  StaminaController m_StaminaController;
 
-    [SerializeField] float m_CoolDownTimer;
-    [SerializeField] float m_CoolDownMaxTime = 2;
-
-    
-   [SerializeField] ParticleSystem m_Dust;
+    [SerializeField] ParticleSystem m_Dust;
 
     Animator m_Animator;
 
@@ -23,7 +23,6 @@ public class Stomp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_CoolDownTimer = m_CoolDownMaxTime;
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_Animator = GetComponent<Animator>();
     }
@@ -35,22 +34,16 @@ public class Stomp : MonoBehaviour
        
         if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if (m_StaminaController.Stomp())
+           // if (m_StaminaController.Stomp())
+            //{
+                if (m_RigidBody.velocity.y > 0)
                 {
-                    if (m_RigidBody.velocity.y > 0)
-                    {
-                        m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
-                    }
+                    m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
+                }
                 buttonPressed = true;
                 m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
-                }
-            
-            }
-
-
-        
-
-
+           // }
+        }
     }
 
     public void TouchButton()
@@ -67,15 +60,32 @@ public class Stomp : MonoBehaviour
         }
     }
 
-   
-
-    void CoolDown()
+    float holdStartTime = 0;
+    float holdDownTime = 0;
+    public void ButtonHold()
     {
-        m_CoolDownTimer -= Time.deltaTime;
+        holdStartTime = Time.time;
+    }
 
-        if (m_CoolDownTimer <= 0)
+    public void ButtonReleased()
+    {
+
+        if (m_StaminaController.Stomp())
         {
-            m_CoolDownTimer = m_CoolDownMaxTime;
+            float maxHoldTime = 2f;
+            holdDownTime = Time.time - holdStartTime;
+            float holdTimeNormalised = Mathf.Clamp01(holdDownTime / maxHoldTime);
+            m_Force = holdTimeNormalised * m_MaxForce;
+
+
+
+            if (m_RigidBody.velocity.y > 0)
+            {
+                m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
+            }
+
+            buttonPressed = true;
+            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
         }
 
     }

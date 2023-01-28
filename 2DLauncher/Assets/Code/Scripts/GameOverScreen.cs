@@ -8,6 +8,7 @@ public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] float m_transitionTime = 0.5f;
     [SerializeField] CanvasGroup m_canvasGroup;
+    [SerializeField] GameObject m_RestartFromCheckPoint;
 
     private void Start()
     {
@@ -30,12 +31,16 @@ public class GameOverScreen : MonoBehaviour
     {
         m_canvasGroup.alpha = 0;
         m_canvasGroup.blocksRaycasts = false;
+        m_RestartFromCheckPoint.SetActive(true);
     }
 
     IEnumerator LerpFunction(float startValue, float endValue, float duration)
     {
         float time = 0;
         m_canvasGroup.blocksRaycasts = true;
+
+        yield return new WaitForSeconds(2.0f);
+
 
         while (time < duration)
         {
@@ -47,6 +52,11 @@ public class GameOverScreen : MonoBehaviour
         
     }
 
+    public void DisableRestartFromCheckPointButton()
+    {
+        m_RestartFromCheckPoint.SetActive(false);
+    }
 
+    
 
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+/// <summary>
+/// This script is responsible for handling and updating the stamina bar.
+/// </summary>
 public class StaminaController : MonoBehaviour
 {
     [Header("Stamina main parameters")]
@@ -17,14 +20,6 @@ public class StaminaController : MonoBehaviour
 
     WaitForSeconds m_RegenTick = new WaitForSeconds(0.01f);
     Coroutine m_Regen;
-
-
-
-
-    void Update()
-    {
-      // Regenerate();
-    }
 
     public bool Stomp()
     {

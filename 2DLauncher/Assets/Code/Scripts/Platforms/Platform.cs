@@ -19,6 +19,8 @@ public class Platform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Rigidbody2D rigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
+           // rigidbody.AddForce(Vector2.up * (rigidbody.velocity.y + 5.0f), ForceMode2D.Impulse);
+
             if (rigidbody.velocity.y > m_minPlayerVelocity)
             {
                 m_Animator.Play("Jump", 0, 0.0f);
