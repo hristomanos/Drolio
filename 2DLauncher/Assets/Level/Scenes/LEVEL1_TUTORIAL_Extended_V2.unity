@@ -1003,6 +1003,10 @@ PrefabInstance:
       propertyPath: m_GameManager
       value: 
       objectReference: {fileID: 385332939}
+    - target: {fileID: 6345920287907621226, guid: 8859b97518d91f449a47ee78468fc1b2, type: 3}
+      propertyPath: m_LerpDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8859b97518d91f449a47ee78468fc1b2, type: 3}
 --- !u!1 &372434922
@@ -7565,6 +7569,10 @@ PrefabInstance:
       propertyPath: m_GameManager
       value: 
       objectReference: {fileID: 385332939}
+    - target: {fileID: 6345920287907621226, guid: 8859b97518d91f449a47ee78468fc1b2, type: 3}
+      propertyPath: m_LerpDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8859b97518d91f449a47ee78468fc1b2, type: 3}
 --- !u!1001 &6010283896254712259
@@ -7748,6 +7756,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7069775967537495833, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7069775967537495834, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -7799,6 +7811,10 @@ PrefabInstance:
     - target: {fileID: 7069775967537495837, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
       propertyPath: m_Name
       value: Player2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069775967537495838, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
+      propertyPath: m_MaxVelocity
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7069775967537495838, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
       propertyPath: trailRenderer

@@ -82,9 +82,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 0}
   m_ResetPosition: {fileID: 3245820245682937790}
-  lerpDuration: 1
+  m_LerpDuration: 0.5
   m_PoleHinge: {fileID: 4037399113449498186}
   m_Flag: {fileID: 5068459246586564332}
+  m_IsActivated: 0
 --- !u!61 &2418618876487467012
 BoxCollider2D:
   m_ObjectHideFlags: 0
