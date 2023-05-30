@@ -10,33 +10,16 @@ public class LivesManager : MonoBehaviour
 
     public int GetNumberOfLives() { return m_NumberOfLives; }
     
-    
-
-    // Start is called before the first frame update
     void Start()
     {
         m_NumberOfLives = m_DefaultNumberOfLives;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    /// <summary>
-    /// Adds amount to lives.
-    /// </summary>
-    /// <param name="amount"></param>
     public void Add(int amount)
     {
         m_NumberOfLives += amount;
     }
 
-    /// <summary>
-    /// Removes amount of lives.
-    /// </summary>
-    /// <param name="amount"></param>
     public void Decrease(int amount)
     {
         m_NumberOfLives -= amount;
@@ -44,7 +27,6 @@ public class LivesManager : MonoBehaviour
         if (m_NumberOfLives <= 0)
         {
             m_NumberOfLives = 0;
-            //Game over!    
         }
     }
 

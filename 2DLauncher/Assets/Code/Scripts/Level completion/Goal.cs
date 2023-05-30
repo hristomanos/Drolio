@@ -5,33 +5,43 @@ using UnityEngine;
 //This script checks if the player has managed to hit the end of the level thus completing it.
 public class Goal : MonoBehaviour
 {
+    [Header("Dependencies")]
     [SerializeField] GameObject m_Player;
-
     [SerializeField] GameManager m_GameManager;
 
+    [Header("Particles")]
     [SerializeField] ParticleSystem m_Fireworks;
 
+    [Header("Visual FX")]
     [SerializeField] Animator m_HollowSquareAnimator;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Play cheerful sound
+           
             AudioManager.instance.PlaySound("LevelComplete");
 
-            //Freeze player
-            m_Player.GetComponent<PlayerMovement>().enabled = false;
-            m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            m_Player.GetComponent<Rigidbody2D>().gravityScale = 0;
-
-            //Play animation
+            FreezePlayer();
+           
             m_HollowSquareAnimator.SetTrigger("LevelComplete");
-
-            //StartCoroutine(FireFireworks());
 
             m_GameManager.LoadFollowingLevel();
         }
+    }
+
+    void FreezePlayer()
+    {
+        m_Player.GetComponent<PlayerMovement>().enabled = false;
+        m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        m_Player.GetComponent<Rigidbody2D>().gravityScale = 0;
+    }
+
+
+
+    void PlayFireworksAnimation()
+    {
+        StartCoroutine(FireFireworks());
     }
 
     IEnumerator FireFireworks()

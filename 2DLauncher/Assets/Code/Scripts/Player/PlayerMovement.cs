@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D            m_RigidBody;
+    Rigidbody2D m_RigidBody;
 
-    [Range(0,50)]
-    [SerializeField] int   m_Speed = 5;
+
+    [Header("Behaviour")]
+    [Range(0, 50)] [SerializeField] int   m_Speed = 5;
 
     [SerializeField] float m_MaxVelocity = 20f;
 

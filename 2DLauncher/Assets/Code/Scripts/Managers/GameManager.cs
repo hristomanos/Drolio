@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Game manager persists throught the game.
 //Its role involves:
@@ -30,15 +28,15 @@ public class GameManager : MonoBehaviour
     LivesManager m_LivesManager;
 
 
-    public void SetPlayerResetPosition(Transform resetPosition) { m_PlayerResetPosition = resetPosition;  }
+    public void SetPlayerResetPosition(Transform resetPosition) { m_PlayerResetPosition = resetPosition; }
     public int CurrentCheckpointID { get; set; }
 
-    private void Start()
+    private void Awake()
     {
         m_LivesManager = GetComponent<LivesManager>();
         m_gameOverScreen = GetComponent<GameOverScreen>();
         Time.timeScale = 1;
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
 
         m_AudioManager = AudioManager.instance;
         if (m_AudioManager == null)
@@ -60,7 +58,7 @@ public class GameManager : MonoBehaviour
                     m_gameOverScreen.FadeIn();
                     m_hasPlayedDeathSound = true;
                 }
-               
+
             }
         }
     }
@@ -112,7 +110,7 @@ public class GameManager : MonoBehaviour
     IEnumerator FadeInAndOut()
     {
         m_Transition.SetTrigger("Start");
-        
+
         yield return new WaitForSeconds(m_TransitionTime);
 
         Reset();
@@ -123,7 +121,7 @@ public class GameManager : MonoBehaviour
     public void Reset()
     {
         //AudioManager.instance.PlaySound("PlayersFallen");
-        
+
         m_Player.SetActive(true);
         m_hasPlayedDeathSound = false;
         m_Player.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
@@ -178,12 +176,12 @@ public class GameManager : MonoBehaviour
             return false;
     }
 
-   
+
     void UpdateLivesUI()
     {
 
     }
-    
+
 
 
 }

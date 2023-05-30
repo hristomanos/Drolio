@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 public class DiamondCounter : MonoBehaviour
@@ -14,6 +13,10 @@ public class DiamondCounter : MonoBehaviour
     public int GetNumberOfDiamonds() { return m_NumberOfDiamonds; }
 
     public void ResetNumberofDiamonds() { m_NumberOfDiamonds = 0; }
+
+
+    public RectTransform m_DiamondImage;
+
 
     private void Awake()
     {

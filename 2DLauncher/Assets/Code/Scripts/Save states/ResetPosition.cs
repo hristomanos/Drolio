@@ -5,17 +5,17 @@ using UnityEngine;
 public class ResetPosition : MonoBehaviour
 {
 
-    Vector3 resetPosition;
+    Vector3 m_ResetPosition;
 
     private void Start()
     {
-        resetPosition = transform.localPosition;
+        m_ResetPosition = transform.localPosition;
     }
 
 
     private void OnDisable()
     {
-        transform.localPosition = resetPosition;
+        transform.localPosition = m_ResetPosition;
         transform.localRotation = Quaternion.identity;
     }
 }

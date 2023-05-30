@@ -1634,8 +1634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758eb3551eac4114fa88ec84fb41b3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_transitionTime: 0.5
-  m_canvasGroup: {fileID: 1491896545}
+  m_TransitionTime: 0.5
+  m_CanvasGroup: {fileID: 1491896545}
   m_RestartFromCheckPoint: {fileID: 1468508744}
 --- !u!114 &1585532179
 MonoBehaviour:

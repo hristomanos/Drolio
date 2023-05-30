@@ -5,63 +5,59 @@ using UnityEngine;
 
 public class Stomp : MonoBehaviour
 {
-    [Header("Downward Force")]
+    [Header("Behaviour")]
     [SerializeField] float m_Force;
 
+    [Header("Dependencies")]
     [SerializeField] StaminaController m_StaminaController;
+
+    [Header("Particle effect")]
     [SerializeField] ParticleSystem m_Dust;
 
     Rigidbody2D m_RigidBody;
-    Animator m_Animator;
+    Animator    m_Animator;
 
-    public bool buttonPressed = false;
+    private bool g_ButtonPressed = false;
+    public bool ButtonPressed { get => g_ButtonPressed; set => g_ButtonPressed = value; }
 
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
-        m_Animator = GetComponent<Animator>();
+        m_Animator  = GetComponent<Animator>();
     }
 
     void Update()
     {
-        float y = Input.GetAxisRaw("Vertical");
-       
-        if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (m_RigidBody.velocity.y > 0)
-            {
-                m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
-            }
-
-            buttonPressed = true;
-
-            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
-        }
+        ProcessPCInput();
     }
 
     void ProcessPCInput()
     {
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (m_RigidBody.velocity.y > 0)
-            {
-                m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
-            }
-
-            buttonPressed = true;
-
-            m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
+            ResetUpwardVelocity();
+            ApplyDownwardImpulseForce();
+            ButtonPressed = true;
         }
     }
 
     public void TouchButton()
     {
+        ResetUpwardVelocity();
+        ApplyDownwardImpulseForce();
+        ButtonPressed = true;
+    }
+
+    void ResetUpwardVelocity()
+    {
         if (m_RigidBody.velocity.y > 0)
         {
             m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
         }
+    }
 
-        buttonPressed = true;
+    void ApplyDownwardImpulseForce()
+    {
         m_RigidBody.AddForce(Vector3.down * m_Force, ForceMode2D.Impulse);
     }
 

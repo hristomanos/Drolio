@@ -18,9 +18,14 @@ public class Basket : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             m_ScreenShake.GenerateImpulse();
-            m_TimeSpeed = 0.5f;
+            ApplySlowMotion();
             Handheld.Vibrate();
         }
+    }
+
+    void ApplySlowMotion()
+    {
+        m_TimeSpeed = 0.5f;
     }
 
     private void Update()

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    [Header("Dependencies")]
     [SerializeField] GameManager m_GameManager;
+
+    [Header("Behaviour")]
     [SerializeField] Transform   m_ResetPosition;
+    [SerializeField] float       m_LerpDuration = 1.0f;
+    [SerializeField] bool        m_IsActivated = false;
 
-    [SerializeField] float m_LerpDuration = 1.0f;
+    [Header("Visual")]
+    [SerializeField] GameObject  m_PoleHinge;
+    [SerializeField] GameObject  m_Flag;
 
-    [SerializeField] GameObject m_PoleHinge;
-    [SerializeField] GameObject m_Flag;
-
-    [SerializeField] bool m_IsActivated = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -732,6 +732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_vCam: {fileID: 1402326455}
   m_PlayerMovement: {fileID: 1519415438}
+  player: {fileID: 0}
 --- !u!114 &519420035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1780,6 +1781,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1431906584 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7858055996441675450, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+  m_PrefabInstance: {fileID: 1431906578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1448112903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1943,6 +1949,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40b81041b2f820418f41bbdb27d7f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1623388848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1560895351, guid: 60caad6bcc3bbaa43809ede77407f01c, type: 3}
+  m_PrefabInstance: {fileID: 1431906578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1721405167
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1962,6 +1979,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 12e5113957c5aed49beed7c76a3725ba, type: 3}
+    - target: {fileID: 562078454, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
+      propertyPath: m_numberOfLivesText
+      value: 
+      objectReference: {fileID: 1623388848}
     - target: {fileID: 562078454, guid: da9d2f08fc4efc040aa0e1cc8e6b99af, type: 3}
       propertyPath: m_numberOfDiamondsText
       value: 
@@ -2235,6 +2256,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 758eb3551eac4114fa88ec84fb41b3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_transitionTime: 0.5
-  m_canvasGroup: {fileID: 1735306517}
-  m_RestartFromCheckPoint: {fileID: 0}
+  m_TransitionTime: 0.5
+  m_CanvasGroup: {fileID: 1735306517}
+  m_RestartFromCheckPoint: {fileID: 1431906584}
+--- !u!114 &2048013019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048013017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d7cfcdb99ea7b459df2edfd31b980f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DefaultNumberOfLives: 3

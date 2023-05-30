@@ -18,13 +18,13 @@ public class EchoEffect : MonoBehaviour
 
     private void Update()
     {
-        if (stomp.buttonPressed)
+        if (stomp.ButtonPressed)
         {
             if (timeBetweenSpawns <= 0)
             {
                 GameObject instance = (GameObject)Instantiate(echo,transform.position,Quaternion.identity);
                 Destroy(instance,5f);
-                stomp.buttonPressed = false;
+                stomp.ButtonPressed = false;
                 timeBetweenSpawns = startTimeBetweenSpawns;
             }
             else
