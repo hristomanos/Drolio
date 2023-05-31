@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using TMPro;
 
 public class DiamondCounter : MonoBehaviour
 {
 
     public static DiamondCounter instance;
 
+    [SerializeField] GameObject scoreEffect;
+    [SerializeField] GameObject WorldCanvas;
 
     private int m_NumberOfDiamonds;
 
@@ -40,4 +44,11 @@ public class DiamondCounter : MonoBehaviour
     {
         ++m_NumberOfDiamonds;
     }
+
+    public void DoFloatingText(Vector3 position)
+    {
+        GameObject floatingText = Instantiate(scoreEffect, position, Quaternion.identity );
+        floatingText.transform.SetParent(WorldCanvas.transform);
+    }
+
 }

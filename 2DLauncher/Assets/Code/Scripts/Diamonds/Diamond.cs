@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Diamond : MonoBehaviour
 {
@@ -60,7 +61,12 @@ public class Diamond : MonoBehaviour
     void Animate()
     {
         Vector2 endValue = new Vector2(transform.position.x,transform.position.y + 2);
-        Sequence seq = transform.DOJump(endValue, 5, 1, 2).Join(spriteRenderer.DOFade(0,1)).SetLink(gameObject).OnComplete(() => Destroy(gameObject));
+
+        Sequence seq = transform.DOJump(endValue, 5, 1, 2)
+            .Join(spriteRenderer.DOFade(0,1))
+            .SetLink(gameObject).OnComplete(() => Destroy(gameObject));
+
+        DiamondCounter.instance.DoFloatingText(transform.position);
     }
 
 

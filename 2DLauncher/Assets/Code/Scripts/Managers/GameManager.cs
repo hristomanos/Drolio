@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] float m_TransitionTime;
     [SerializeField] GameObject m_Player;
 
-
     [SerializeField] Transform m_PlayerResetPosition;
     [SerializeField] Transform m_BorderLine;
 
@@ -175,13 +174,5 @@ public class GameManager : MonoBehaviour
         else
             return false;
     }
-
-
-    void UpdateLivesUI()
-    {
-
-    }
-
-
 
 }
