@@ -63,7 +63,7 @@ public class Death : MonoBehaviour
         breakableObject = ObjectPool.SharedInstance.GetPooledObject();
         if (breakableObject != null)
         {
-            breakableObject.transform.parent = transform;
+            //breakableObject.transform.SetParent(transform);
             breakableObject.transform.position = transform.position;
             breakableObject.SetActive(true);
         }
@@ -76,6 +76,7 @@ public class Death : MonoBehaviour
         m_RigidBody2D.velocity  = Vector3.zero;
         m_RigidBody2D.gravityScale = 2;
 
+        breakableObject.transform.parent = null;
         m_PlayerMovement.enabled = true;
         m_BoxCollider2D.enabled  = true;
         m_SpriteRenderer.enabled = true;

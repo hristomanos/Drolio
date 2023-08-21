@@ -7922,6 +7922,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7069775967537495835, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7069775967537495836, guid: bf3716af0e06d0746ae19e30d8a84fb2, type: 3}
       propertyPath: m_StaminaSlider_Bar
       value: 
