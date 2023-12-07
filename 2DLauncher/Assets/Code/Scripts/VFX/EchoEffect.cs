@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EchoEffect : MonoBehaviour
@@ -18,12 +16,12 @@ public class EchoEffect : MonoBehaviour
 
     private void Update()
     {
-        if (stomp.ButtonPressed)
+        if ( stomp.ButtonPressed )
         {
-            if (timeBetweenSpawns <= 0)
+            if ( timeBetweenSpawns <= 0 )
             {
                 GameObject instance = (GameObject)Instantiate(echo,transform.position,Quaternion.identity);
-                Destroy(instance,5f);
+                Destroy(instance, 5f);
                 stomp.ButtonPressed = false;
                 timeBetweenSpawns = startTimeBetweenSpawns;
             }

@@ -3,7 +3,7 @@
     [UnityEngine.AddComponentMenu("Febucci/HierarchyIcons/ClassA")]
     class ClassA : BaseClassA
     {
-        
+
     }
-   
+
 }

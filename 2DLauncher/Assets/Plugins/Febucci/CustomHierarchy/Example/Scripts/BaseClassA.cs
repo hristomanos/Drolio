@@ -1,9 +1,9 @@
 ﻿namespace Febucci.HierarchyData.Examples
 {
-     [UnityEngine.AddComponentMenu("")]
+    [UnityEngine.AddComponentMenu("")]
     abstract class BaseClassA : UnityEngine.MonoBehaviour
     {
-        
+
     }
-   
+
 }

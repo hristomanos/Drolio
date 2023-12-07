@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be81bf92c1fbf5c4abc0530d89715bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_numberOfDiamondsText: {fileID: 0}
+  scoreEffect: {fileID: 8914645989056566935, guid: 75050b5a2635b3a49b426da9e6e5c275, type: 3}
+  WorldCanvas: {fileID: 0}
+  m_DiamondImage: {fileID: 0}

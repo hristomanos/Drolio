@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //This script checks if the player has managed to hit the end of the level thus completing it.
@@ -17,13 +16,13 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if ( collision.gameObject.CompareTag("Player") )
         {
-           
+
             AudioManager.instance.PlaySound("LevelComplete");
 
             FreezePlayer();
-           
+
             m_HollowSquareAnimator.SetTrigger("LevelComplete");
 
             m_GameManager.LoadFollowingLevel();
@@ -53,7 +52,7 @@ public class Goal : MonoBehaviour
 
         m_Fireworks.Play();
 
-        
+
         yield return new WaitForSeconds(3.0f);
 
         m_GameManager.LoadFollowingLevel();
@@ -61,6 +60,6 @@ public class Goal : MonoBehaviour
 
 
 
-    
+
 
 }

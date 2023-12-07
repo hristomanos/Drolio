@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using System.Collections;
+using UnityEngine;
 
 public class CameraZoomer : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera m_vCam;
     [SerializeField] PlayerMovement m_PlayerMovement;
-    
+
     Camera m_mainCamera;
     CinemachineBrain m_cinemachineBrain;
 
@@ -21,7 +20,7 @@ public class CameraZoomer : MonoBehaviour
     void Start()
     {
         m_mainCamera = Camera.main;
-        m_cinemachineBrain = (m_mainCamera = null) ? null : GetComponent<CinemachineBrain>();
+        m_cinemachineBrain = ( m_mainCamera = null ) ? null : GetComponent<CinemachineBrain>();
         //m_vCam = (m_cinemachineBrain = null) ? null : m_cinemachineBrain.ActiveVirtualCamera as CinemachineVirtualCamera;
         m_playerMaxVelocity = m_PlayerMovement.GetMaxVelocity();
     }
@@ -33,10 +32,10 @@ public class CameraZoomer : MonoBehaviour
 
     void SetOrthographicSize()
     {
-        if (m_vCam != null && m_PlayerMovement != null)
+        if ( m_vCam != null && m_PlayerMovement != null )
         {
             float currentSpeed = Mathf.Abs(m_PlayerMovement.GetVelocityY());
-           
+
             CalculateCurrentMaxVelocity(currentSpeed);
 
             //Inverse Lerp returns a value between 0 - 1. It is the same as getting the percentage between two values.
@@ -44,14 +43,14 @@ public class CameraZoomer : MonoBehaviour
 
             float speedPercentage = Mathf.InverseLerp(0f, m_playerMaxVelocity, m_currentMaxVelocity);
 
-          
+
 
             //Making transition between 0 and 1 smoother.
             //speedPercentage = Mathf.SmoothStep(0, 1, speedPercentage);
             speedPercentage = Mathf.SmoothStep(0, 1, speedPercentage);
 
 
-            
+
             //Update camera zoom.
             m_vCam.m_Lens.OrthographicSize = Mathf.Lerp(12.32f, m_currentMaxVelocity + 5, speedPercentage);
             ZoomIn();
@@ -63,7 +62,7 @@ public class CameraZoomer : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
 
         m_currentMaxVelocity -= Time.deltaTime;
-        if (m_currentMaxVelocity <= 0)
+        if ( m_currentMaxVelocity <= 0 )
         {
             m_currentMaxVelocity = 0;
         }
@@ -72,12 +71,12 @@ public class CameraZoomer : MonoBehaviour
 
     void CalculateCurrentMaxVelocity(float playerSpeed)
     {
-        if (m_currentMaxVelocity < playerSpeed)
+        if ( m_currentMaxVelocity < playerSpeed )
         {
             m_currentMaxVelocity = playerSpeed;
         }
 
-        if (m_currentMaxVelocity > 20.0f)
+        if ( m_currentMaxVelocity > 20.0f )
         {
             m_currentMaxVelocity = 20.0f;
         }

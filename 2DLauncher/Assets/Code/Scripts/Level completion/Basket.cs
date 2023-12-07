@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 public class Basket : MonoBehaviour
 {
     CinemachineImpulseSource m_ScreenShake;
 
-    float m_TimeSpeed = 1; 
+    float m_TimeSpeed = 1;
 
     private void Start()
     {
@@ -15,7 +13,7 @@ public class Basket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if ( collision.gameObject.CompareTag("Player") )
         {
             m_ScreenShake.GenerateImpulse();
             ApplySlowMotion();

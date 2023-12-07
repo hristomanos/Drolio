@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
 public class PauseGame : MonoBehaviour
@@ -32,7 +29,7 @@ public class PauseGame : MonoBehaviour
 
     void Pause()
     {
-        if (m_GameIsPaused)
+        if ( m_GameIsPaused )
         {
             m_PausePanel.SetActive(true);
             Time.timeScale = 0;

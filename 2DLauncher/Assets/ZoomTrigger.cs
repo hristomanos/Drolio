@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
 public class ZoomTrigger : MonoBehaviour
 {
@@ -9,26 +7,26 @@ public class ZoomTrigger : MonoBehaviour
 
     [SerializeField] float m_TargetZoom = 20;
     [SerializeField] float m_Speed = 30;
-    
+
 
     bool isTriggered = false;
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
     }
 
     private void Update()
     {
         //m_targetZoom -= Input.mouseScrollDelta.y * 1;
         //m_targetZoom = Mathf.Clamp(m_targetZoom, m_minZoom, m_maxZoom);
-        if (isTriggered)
+        if ( isTriggered )
         {
             float newSize = Mathf.MoveTowards(m_vCam.m_Lens.OrthographicSize, m_TargetZoom, m_Speed * Time.deltaTime);
             m_vCam.m_Lens.OrthographicSize = newSize;
 
 
-            if (newSize == m_TargetZoom)
+            if ( newSize == m_TargetZoom )
             {
                 isTriggered = false;
             }
@@ -40,7 +38,7 @@ public class ZoomTrigger : MonoBehaviour
     {
         // m_StartZoom = m_vCam.m_Lens.OrthographicSize;
         // m_vCam.m_Lens.OrthographicSize = Mathf.Lerp(m_StartZoom, m_EndZoom, speedPercentage);
-        if (collision.CompareTag("Player"))
+        if ( collision.CompareTag("Player") )
         {
             isTriggered = true;
         }

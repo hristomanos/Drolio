@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Febucci.HierarchyData
@@ -7,7 +6,7 @@ namespace Febucci.HierarchyData
     public class HierarchyData : ScriptableObject
     {
         public bool enabled = true;
-        
+
         #region Icons Data
 
         [System.Serializable]
@@ -20,13 +19,13 @@ namespace Febucci.HierarchyData
                 [SerializeField] public Texture2D iconToDraw;
                 [SerializeField] public MonoScript[] targetClasses;
             }
-            
+
             public bool aligned = false;
             public HierarchyElement[] pairs = new HierarchyElement[0];
         }
-        
+
         public IconsData icons;
-        
+
         #endregion
 
         #region PrefabsData
@@ -47,10 +46,10 @@ namespace Febucci.HierarchyData
         }
 
         public PrefabsData prefabsData;
-        
+
 
         #endregion
-        
+
         #region Alternating Lines
 
         [System.Serializable]
@@ -61,7 +60,7 @@ namespace Febucci.HierarchyData
         }
 
         public AlternatingBGData alternatingBackground;
-        
+
         #endregion
 
         #region SeparatorData
@@ -73,7 +72,7 @@ namespace Febucci.HierarchyData
             public string startString = ">";
             public Color color = new Color(0, 1,1, .15f);
         }
-        
+
         public SeparatorData separator;
 
         #endregion
@@ -103,21 +102,21 @@ namespace Febucci.HierarchyData
                     overlayColor =  new Color(1f, 0.44f, 0.97f, .04f),
                     colors = new []
                     {
-                        new Color(1f, 0.44f, 0.97f), 
-                        new Color(0.56f, 0.44f, 1f), 
-                        new Color(0.44f, 0.71f, 1f), 
+                        new Color(1f, 0.44f, 0.97f),
+                        new Color(0.56f, 0.44f, 1f),
+                        new Color(0.44f, 0.71f, 1f),
                         new Color(0.19f, 0.53f, 0.78f)
                     }
                 },
-                
+
                 new BranchGroup()
                 {
-                    overlayColor =  new Color(0.93f, 1f, 0.42f, .04f), 
+                    overlayColor =  new Color(0.93f, 1f, 0.42f, .04f),
                     colors = new []
                     {
-                        new Color(0.93f, 1f, 0.42f), 
-                        new Color(1f, 0.75f, 0.42f), 
-                        new Color(1f, 0.46f, 0.31f), 
+                        new Color(0.93f, 1f, 0.42f),
+                        new Color(1f, 0.75f, 0.42f),
+                        new Color(1f, 0.46f, 0.31f),
                         new Color(1f, 0.35f, 0.34f)
                     }
                 }
@@ -125,7 +124,7 @@ namespace Febucci.HierarchyData
         }
 
         public TreeData tree;
-        
+
 
         #endregion
 

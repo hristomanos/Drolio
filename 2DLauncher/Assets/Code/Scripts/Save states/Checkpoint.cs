@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -19,7 +18,7 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && CheckIfCurrentCheckPointIsNotSelf())
+        if ( collision.CompareTag("Player") && CheckIfCurrentCheckPointIsNotSelf() )
         {
             m_GameManager.CurrentCheckpointID = gameObject.GetInstanceID();
             m_GameManager.SetPlayerResetPosition(m_ResetPosition);
@@ -29,7 +28,7 @@ public class Checkpoint : MonoBehaviour
 
     bool CheckIfCurrentCheckPointIsNotSelf()
     {
-        if (m_GameManager.CurrentCheckpointID != gameObject.GetInstanceID())
+        if ( m_GameManager.CurrentCheckpointID != gameObject.GetInstanceID() )
         {
             return true;
         }
@@ -40,7 +39,7 @@ public class Checkpoint : MonoBehaviour
 
     void PlayAnimation()
     {
-        if (!m_IsActivated)
+        if ( !m_IsActivated )
         {
             StartCoroutine(Rotate180());
         }
@@ -49,11 +48,11 @@ public class Checkpoint : MonoBehaviour
     IEnumerator Rotate180()
     {
         float timeElapsed = 0;
-        
+
         Quaternion startRotation = m_PoleHinge.transform.rotation;
         Quaternion targetRotation = m_PoleHinge.transform.rotation * Quaternion.Euler(0, 0, -180);
 
-        while (timeElapsed < m_LerpDuration)
+        while ( timeElapsed < m_LerpDuration )
         {
             m_PoleHinge.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed / m_LerpDuration);
             timeElapsed += Time.deltaTime;

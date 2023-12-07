@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +21,7 @@ public class ObjectPool : MonoBehaviour
         pooledObjects = new List<GameObject>();
         GameObject tmp;
 
-        for (int i = 0; i < ammountToPool; i++)
+        for ( int i = 0; i < ammountToPool; i++ )
         {
             tmp = Instantiate(objectToPool);
             tmp.SetActive(false);
@@ -32,9 +31,9 @@ public class ObjectPool : MonoBehaviour
 
     public GameObject GetPooledObject()
     {
-        for (int i = 0; i < ammountToPool; i++)
+        for ( int i = 0; i < ammountToPool; i++ )
         {
-            if (!pooledObjects[i].activeInHierarchy)
+            if ( !pooledObjects[i].activeInHierarchy )
             {
                 return pooledObjects[i];
             }

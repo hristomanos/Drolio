@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LivesManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class LivesManager : MonoBehaviour
     [SerializeField] int m_DefaultNumberOfLives = 3;
 
     public int GetNumberOfLives() { return m_NumberOfLives; }
-    
+
     void Start()
     {
         m_NumberOfLives = m_DefaultNumberOfLives;
@@ -24,7 +22,7 @@ public class LivesManager : MonoBehaviour
     {
         m_NumberOfLives -= amount;
 
-        if (m_NumberOfLives <= 0)
+        if ( m_NumberOfLives <= 0 )
         {
             m_NumberOfLives = 0;
         }

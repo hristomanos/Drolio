@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RotatingSpikes : Spikes
@@ -27,7 +26,7 @@ public class RotatingSpikes : Spikes
         Quaternion startRotation  = transform.rotation;
         Quaternion targetRotation = transform.rotation * Quaternion.Euler(0, 0, sign * 180);
 
-        while (timeElapsed < lerpDuration)
+        while ( timeElapsed < lerpDuration )
         {
             transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed / lerpDuration);
             timeElapsed += Time.deltaTime;

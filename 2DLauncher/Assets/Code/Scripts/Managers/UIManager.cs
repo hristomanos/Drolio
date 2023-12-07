@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,7 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_numberOfLivesText;
     LivesManager m_LivesManager;
 
-    
+    [SerializeField] DiamondCounter diamondCounter;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +40,7 @@ public class UIManager : MonoBehaviour
 
     void UpdateLivesUI()
     {
-        if (m_LivesManager != null)
+        if ( m_LivesManager != null )
         {
             m_numberOfLivesText.text = m_LivesManager.UpdateUI();
         }

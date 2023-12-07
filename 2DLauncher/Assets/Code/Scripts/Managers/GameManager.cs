@@ -35,10 +35,10 @@ public class GameManager : MonoBehaviour
         m_LivesManager = GetComponent<LivesManager>();
         m_gameOverScreen = GetComponent<GameOverScreen>();
         Time.timeScale = 1;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         m_AudioManager = AudioManager.instance;
-        if (m_AudioManager == null)
+        if ( m_AudioManager == null )
         {
             Debug.LogError("No audiomanager found in the scene");
         }
@@ -46,11 +46,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (m_BorderLine != null && m_PlayerResetPosition != null)
+        if ( m_BorderLine != null && m_PlayerResetPosition != null )
         {
-            if (PlayerHasFallenOff())
+            if ( PlayerHasFallenOff() )
             {
-                if (!m_hasPlayedDeathSound)
+                if ( !m_hasPlayedDeathSound )
                 {
                     AudioManager.instance.PlaySound("PlayersFallen");
                     m_Player.SetActive(false);
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(levelIndex);
 
         // Wait until the asynchronous scene fully loads
-        while (!asyncLoad.isDone)
+        while ( !asyncLoad.isDone )
         {
             yield return null;
         }
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlaySound("PlayersFallen");
         m_LivesManager.Decrease(1);
 
-        if (PlayerIsOutOfLives())
+        if ( PlayerIsOutOfLives() )
         {
             m_gameOverScreen.DisableRestartFromCheckPointButton();
         }
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     bool PlayerIsOutOfLives()
     {
-        if (m_LivesManager.GetNumberOfLives() <= 0)
+        if ( m_LivesManager.GetNumberOfLives() <= 0 )
         {
             return true;
         }
@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
 
     private bool PlayerHasFallenOff()
     {
-        if (m_Player.transform.position.y < m_BorderLine.position.y)
+        if ( m_Player.transform.position.y < m_BorderLine.position.y )
         {
             return true;
         }

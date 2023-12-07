@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// This script is responsible for handling and updating the stamina bar.
@@ -13,7 +12,7 @@ public class StaminaController : MonoBehaviour
     [SerializeField] float m_MaxPlayerStamina = 100.0f;
     [SerializeField] float m_StompCost = 25f;
     [SerializeField] float m_staminaRegenSpeed;
-    
+
 
     [Header("Stamina UI parameters")]
     [SerializeField] Image m_StaminaSlider_Bar;
@@ -24,12 +23,12 @@ public class StaminaController : MonoBehaviour
     public bool Stomp()
     {
         //Stomp cannot be used if there is not enough stamina
-        if (m_CurrentPlayerStamina - m_StompCost >= 0)
+        if ( m_CurrentPlayerStamina - m_StompCost >= 0 )
         {
             m_CurrentPlayerStamina -= m_StompCost;
             UpdateUI();
 
-            if (m_Regen != null)
+            if ( m_Regen != null )
             {
                 StopCoroutine(m_Regen);
             }
@@ -37,17 +36,17 @@ public class StaminaController : MonoBehaviour
             m_Regen = StartCoroutine(RegenStamina());
 
             return true;
-        } 
+        }
         else
         {
             return false;
         }
     }
 
-   void Regenerate()
+    void Regenerate()
     {
-        
-        if (m_CurrentPlayerStamina <= m_MaxPlayerStamina)
+
+        if ( m_CurrentPlayerStamina <= m_MaxPlayerStamina )
         {
             m_CurrentPlayerStamina += m_staminaRegenSpeed * Time.deltaTime;
             UpdateUI();
@@ -58,14 +57,14 @@ public class StaminaController : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        while (m_CurrentPlayerStamina < m_MaxPlayerStamina)
+        while ( m_CurrentPlayerStamina < m_MaxPlayerStamina )
         {
             m_CurrentPlayerStamina += m_MaxPlayerStamina / 100 * m_staminaRegenSpeed;
 
             UpdateUI();
             yield return m_RegenTick;
         }
-        
+
         m_Regen = null;
     }
 

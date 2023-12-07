@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -16,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float GetMaxVelocity() { return m_MaxVelocity; }
-    public float GetVelocityY()   { return m_RigidBody.velocity.y; }
+    public float GetVelocityY() { return m_RigidBody.velocity.y; }
 
     void Start()
     {
@@ -26,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        #if UNITY_EDITOR
-            MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
-        #endif
+#if UNITY_EDITOR
+        MovePlayerVelocity(Input.GetAxisRaw("Horizontal"));
+#endif
 
         SetMaxVelocity();
 
@@ -36,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayerVelocity(float horizontal)
     {
-        if (this.enabled == true)
+        if ( this.enabled == true )
         {
             m_RigidBody.velocity = new Vector2(horizontal * m_Speed, m_RigidBody.velocity.y);
         }
@@ -44,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SetMaxVelocity()
     {
-        if (m_RigidBody.velocity.magnitude >= m_MaxVelocity)
+        if ( m_RigidBody.velocity.magnitude >= m_MaxVelocity )
         {
             m_RigidBody.velocity = Vector2.ClampMagnitude(m_RigidBody.velocity, m_MaxVelocity);
         }

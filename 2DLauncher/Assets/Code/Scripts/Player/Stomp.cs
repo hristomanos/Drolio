@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -23,7 +21,7 @@ public class Stomp : MonoBehaviour
     void Start()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
-        m_Animator  = GetComponent<Animator>();
+        m_Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -33,7 +31,7 @@ public class Stomp : MonoBehaviour
 
     void ProcessPCInput()
     {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) )
         {
             ResetUpwardVelocity();
             ApplyDownwardImpulseForce();
@@ -50,7 +48,7 @@ public class Stomp : MonoBehaviour
 
     void ResetUpwardVelocity()
     {
-        if (m_RigidBody.velocity.y > 0)
+        if ( m_RigidBody.velocity.y > 0 )
         {
             m_RigidBody.velocity = new Vector2(m_RigidBody.velocity.x, 0.0f);
         }
@@ -68,10 +66,10 @@ public class Stomp : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Mathf.Abs(m_RigidBody.velocity.y) > 5 && collision.gameObject.layer == 6)
+        if ( Mathf.Abs(m_RigidBody.velocity.y) > 5 && collision.gameObject.layer == 6 )
         {
             CreateDust();
-            m_Animator.Play("Squeeze", 0,0);
+            m_Animator.Play("Squeeze", 0, 0);
             AudioManager.instance.PlaySound("Stomp");
         }
     }

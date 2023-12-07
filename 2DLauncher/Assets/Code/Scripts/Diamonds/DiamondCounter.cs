@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 
 public class DiamondCounter : MonoBehaviour
 {
@@ -24,7 +20,7 @@ public class DiamondCounter : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if ( instance == null )
         {
             instance = this;
             DontDestroyOnLoad(gameObject);

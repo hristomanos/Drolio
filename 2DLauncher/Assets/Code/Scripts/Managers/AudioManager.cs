@@ -30,13 +30,13 @@ public class Sound
 
     public void Play()
     {
-        
 
-        if (randomise)
+
+        if ( randomise )
         {
-            m_AudioSource.volume = m_Volume * (1 + Random.Range(-randomVolume / 2f, randomVolume / 2f));
-            m_AudioSource.pitch = m_Pitch * (1 + Random.Range(-randomPitch / 2f, randomPitch / 2f));
-            
+            m_AudioSource.volume = m_Volume * ( 1 + Random.Range(-randomVolume / 2f, randomVolume / 2f) );
+            m_AudioSource.pitch = m_Pitch * ( 1 + Random.Range(-randomPitch / 2f, randomPitch / 2f) );
+
         }
         else
         {
@@ -46,7 +46,7 @@ public class Sound
 
         m_AudioSource.Play();
     }
-    
+
 }
 
 
@@ -57,7 +57,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance { get; private set; }
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if ( instance != null && instance != this )
         {
             Destroy(this);
             Debug.LogError("More than one AudioManager in the scene");
@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
-       
+
     }
 
     [SerializeField]
@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < m_Sounds.Length; i++)
+        for ( int i = 0; i < m_Sounds.Length; i++ )
         {
             GameObject gameObject = new GameObject("Sound_" + i + "_" + m_Sounds[i].GetName());
             gameObject.transform.SetParent(this.transform);
@@ -85,9 +85,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(string name)
     {
-        for (int i = 0; i < m_Sounds.Length; i++)
+        for ( int i = 0; i < m_Sounds.Length; i++ )
         {
-            if (m_Sounds[i].GetName() == name)
+            if ( m_Sounds[i].GetName() == name )
             {
                 m_Sounds[i].Play();
                 return;

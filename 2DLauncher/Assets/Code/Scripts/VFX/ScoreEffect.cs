@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using UnityEngine;
 
 public class ScoreEffect : MonoBehaviour
 {
@@ -20,7 +18,7 @@ public class ScoreEffect : MonoBehaviour
     private void Start()
     {
         scorePlusOneText.DOFade(0, 1.5f);
-        scorePlusOne.DOMoveY(transform.position.y + 8 , 1.5f).OnComplete(() => Destroy(gameObject));
+        scorePlusOne.DOMoveY(transform.position.y + 8, 1.5f).OnComplete(() => Destroy(gameObject));
     }
 
 

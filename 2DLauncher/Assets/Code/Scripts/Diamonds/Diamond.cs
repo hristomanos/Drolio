@@ -1,7 +1,6 @@
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using DG.Tweening;
-using TMPro;
 
 public class Diamond : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class Diamond : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!touched)
+        if ( !touched )
         {
             DiamondCounter.instance.AddADiamond();
             AudioManager.instance.PlaySound("Diamond");

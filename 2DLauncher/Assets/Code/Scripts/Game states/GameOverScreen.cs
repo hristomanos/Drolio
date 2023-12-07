@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class GameOverScreen : MonoBehaviour
@@ -22,12 +20,12 @@ public class GameOverScreen : MonoBehaviour
 
     public void FadeIn()
     {
-        StartCoroutine(LerpFunction(0,1,m_TransitionTime));
+        StartCoroutine(LerpFunction(0, 1, m_TransitionTime));
     }
 
     public void FadeOut()
     {
-        StartCoroutine(LerpFunction(1,0, m_TransitionTime));
+        StartCoroutine(LerpFunction(1, 0, m_TransitionTime));
     }
 
     public void Reset()
@@ -45,14 +43,14 @@ public class GameOverScreen : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
 
-        while (time < duration)
+        while ( time < duration )
         {
             m_CanvasGroup.alpha = Mathf.Lerp(startValue, 1, time / duration);
             time += Time.deltaTime;
             yield return null;
         }
         m_CanvasGroup.alpha = 1;
-        
+
     }
 
     public void DisableRestartFromCheckPointButton()
@@ -60,6 +58,6 @@ public class GameOverScreen : MonoBehaviour
         m_RestartFromCheckPoint.SetActive(false);
     }
 
-    
+
 
 }
