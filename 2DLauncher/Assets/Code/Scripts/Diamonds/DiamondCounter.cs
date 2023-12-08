@@ -1,50 +1,36 @@
+using System;
 using UnityEngine;
 
-public class DiamondCounter : MonoBehaviour
+[CreateAssetMenu(menuName = "Diamond Counter")]
+public class DiamondCounter : ScriptableObject
 {
-
-    public static DiamondCounter instance;
-
-    [SerializeField] GameObject scoreEffect;
-    [SerializeField] GameObject WorldCanvas;
-
-    private int m_NumberOfDiamonds;
-
-    public int GetNumberOfDiamonds() { return m_NumberOfDiamonds; }
-
-    public void ResetNumberofDiamonds() { m_NumberOfDiamonds = 0; }
-
+    //This class is just counting the number of diamonds the player has collected
+    //And plays the score UI animation? although maybe it shouldn't be.
 
     public RectTransform m_DiamondImage;
 
+    private int m_NumberOfDiamonds;
+    public int NumberOfDiamonds { get => m_NumberOfDiamonds; private set => m_NumberOfDiamonds = value; }
 
-    private void Awake()
+
+    public int Count => NumberOfDiamonds;
+
+    public void Reset()
     {
-        if ( instance == null )
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        NumberOfDiamonds = 0;
     }
 
-    private void Start()
+    public event Action<Vector3> Changed;
+
+    private void OnEnable()
     {
-        m_NumberOfDiamonds = 0;
+        NumberOfDiamonds = 0;
     }
 
-    public void AddADiamond()
+    public void Add(Vector3 position)
     {
-        ++m_NumberOfDiamonds;
-    }
-
-    public void DoFloatingText(Vector3 position)
-    {
-        GameObject floatingText = Instantiate(scoreEffect, position, Quaternion.identity );
-        floatingText.transform.SetParent(WorldCanvas.transform);
+        NumberOfDiamonds++;
+        Changed?.Invoke(position);
     }
 
 }

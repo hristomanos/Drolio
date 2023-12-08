@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform m_PlayerResetPosition;
     [SerializeField] Transform m_BorderLine;
 
+    [SerializeField] DiamondCounter diamondCounter;
+
     AudioManager m_AudioManager;
 
     GameOverScreen m_gameOverScreen;
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         StartCoroutine(LoadLevel(0));
-        DiamondCounter.instance.ResetNumberofDiamonds();
+        diamondCounter.Reset();
     }
     IEnumerator LoadLevel(int levelIndex)
     {

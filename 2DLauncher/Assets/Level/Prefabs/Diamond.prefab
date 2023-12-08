@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 2
+  diamondCounter: {fileID: 11400000, guid: 00231a44cde2ef14bb97acf90dd541b9, type: 2}
 --- !u!61 &8620575566387998517
 BoxCollider2D:
   m_ObjectHideFlags: 0

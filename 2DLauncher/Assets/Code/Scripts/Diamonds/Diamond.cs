@@ -5,9 +5,10 @@ using UnityEngine;
 public class Diamond : MonoBehaviour
 {
     [SerializeField] float m_Speed = 2f;
+    [SerializeField] DiamondCounter diamondCounter;
 
-    Animator      m_Animator;
-    RectTransform m_Target;
+    Animator       m_Animator;
+    RectTransform  m_Target;
     SpriteRenderer spriteRenderer;
 
     bool touched;
@@ -15,7 +16,7 @@ public class Diamond : MonoBehaviour
     private void Start()
     {
         m_Animator = GetComponent<Animator>();
-        m_Target = DiamondCounter.instance.m_DiamondImage;
+        m_Target = diamondCounter.m_DiamondImage;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -23,7 +24,7 @@ public class Diamond : MonoBehaviour
     {
         if ( !touched )
         {
-            DiamondCounter.instance.AddADiamond();
+            diamondCounter.Add(transform.position);
             AudioManager.instance.PlaySound("Diamond");
             m_Animator.enabled = false;
             Animate();
@@ -64,8 +65,6 @@ public class Diamond : MonoBehaviour
         Sequence seq = transform.DOJump(endValue, 5, 1, 2)
             .Join(spriteRenderer.DOFade(0,1))
             .SetLink(gameObject).OnComplete(() => Destroy(gameObject));
-
-        DiamondCounter.instance.DoFloatingText(transform.position);
     }
 
 

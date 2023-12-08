@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-
     [SerializeField] int m_totalNumberOfDiamondsInLevel;
 
     [SerializeField] TextMeshProUGUI m_numberOfDiamondsText;
@@ -13,24 +12,34 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] DiamondCounter diamondCounter;
 
+    [SerializeField] GameObject scoreEffect;
+    [SerializeField] GameObject WorldCanvas;
+
 
     // Start is called before the first frame update
     void Start()
     {
         m_LivesManager = GetComponent<LivesManager>();
+        diamondCounter.Changed += UpdateNumberOfDiamondsUI;
+        UpdateNumberOfDiamondsUI(new Vector3(-100, -100));
+    }
+
+    private void OnDestroy()
+    {
+        diamondCounter.Changed -= UpdateNumberOfDiamondsUI;
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateNumberOfDiamondsUI();
         UpdateRemainingNumberOfDiamondsUI();
         UpdateLivesUI();
     }
 
-    void UpdateNumberOfDiamondsUI()
+    void UpdateNumberOfDiamondsUI(Vector3 position)
     {
-        m_numberOfDiamondsText.text = DiamondCounter.instance.GetNumberOfDiamonds().ToString();
+        m_numberOfDiamondsText.text = diamondCounter.Count.ToString();
+        DoFloatingText(position);
     }
 
     void UpdateRemainingNumberOfDiamondsUI()
@@ -46,7 +55,12 @@ public class UIManager : MonoBehaviour
         }
         else
             Debug.LogError("Lives manager is empty");
+    }
 
+    public void DoFloatingText(Vector3 position)
+    {
+        GameObject floatingText = Instantiate(scoreEffect, position, Quaternion.identity );
+        floatingText.transform.SetParent(WorldCanvas.transform);
     }
 
 }
